@@ -1,0 +1,288 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="sortingFiles" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="735,982" sap2010:WorkflowViewState.IdRef="sortingFiles_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="21">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="18">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap2010:Annotation.AnnotationText="Assign projectFolderPath to the project folder &quot;\InvoiceScrappingProject&quot; on the Desktop. Loop the project folder  &quot;\InvoiceScrappingProject&quot; and check if files are pdf or excel files. If they are excel files save them into &quot;\Processed Excel Files&quot; folder and if they are pdf files save them into a new folder with their invoice month and year as their name &quot;mmyyyy&quot;&#xA;&#xA;Pre-Condition: emailExcelFiles workflow executed successully and workbooks emailed as attachment&#xA;Post-Condition: Excel and pdf files are sorted into their respective folders " DisplayName="sortingFiles" sap:VirtualizedContainerService.HintSize="715,922" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:String" Name="projectFolderPath" />
+      <Variable x:TypeArguments="s:String[]" Name="filesInProjectFolder" />
+      <Variable x:TypeArguments="x:String" Name="fileName" />
+      <Variable x:TypeArguments="x:String" Name="invoiceFolder" />
+    </Flowchart.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,75</av:Size>
+        <x:Double x:Key="Width">681</x:Double>
+        <x:Double x:Key="Height">784</x:Double>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,126</av:PointCollection>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <x:Reference>__ReferenceID2</x:Reference>
+    </Flowchart.StartNode>
+    <FlowStep x:Name="__ReferenceID2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">200,126</av:Point>
+          <av:Size x:Key="ShapeSize">200,108</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">200,180 140,180 140,309</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:GetEnvironmentVariable sap2010:Annotation.AnnotationText="Get the current working dir &quot;invoiceScrapingProject&quot; folder" DisplayName="Get Environment Variable" sap:VirtualizedContainerService.HintSize="200,108" sap2010:WorkflowViewState.IdRef="GetEnvironmentVariable_1" Variable="CurrentDirectory" VariableValue="[projectFolderPath]">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:GetEnvironmentVariable>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID0">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">9,309</av:Point>
+              <av:Size x:Key="ShapeSize">262,102</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">271,360 440,360</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap2010:Annotation.AnnotationText="Creates a string array of the names of the files and assign it to files in project folder " DisplayName="Assign FileName to Extracted Folder" sap:VirtualizedContainerService.HintSize="262,102" sap2010:WorkflowViewState.IdRef="Assign_6">
+            <Assign.To>
+              <OutArgument x:TypeArguments="s:String[]">[filesInProjectFolder]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(projectFolderPath)]</InArgument>
+            </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Assign>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">440,231</av:Point>
+                  <av:Size x:Key="ShapeSize">200,258</av:Size>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence sap2010:Annotation.AnnotationText="1. Loops the project folder to check file extensions. &#xA;2. If the file extension is a .pdf or .xlsx&#xA;3. Check if the Folder with the  month &amp; year of the pdf file exists and move that pdf file into it, else create it and move that file into that folder.&#xA; 4. If there are .xlsx files create the &quot;\Processed Excel Files&quot; folder and move them into it" DisplayName="Sort Excel and PDF Files" sap:VirtualizedContainerService.HintSize="200,258" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loops the project folder file to check if the files are pdf or not. If the file is pdf, check if invoiceFolder with name &quot;mmyyyy&quot; of file date exist, if exists it moves the pdf file into it, else it will create it and extract the file date to be the name of the invoiceFolder. " DisplayName="For Each file in project Folder" sap:VirtualizedContainerService.HintSize="2633,1647" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[filesInProjectFolder]">
+                  <ui:ForEach.Body>
+                    <ActivityAction x:TypeArguments="x:Object">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:Object" Name="file" />
+                      </ActivityAction.Argument>
+                      <If sap2010:Annotation.AnnotationText="Checks if the files in the project folder are pdf or excel files: &#xA;1. Loops the project folder to chec file extensions. &#xA;2. If the file extension is a .pdf 3. Check if the Folder with the  month &amp; year of the pdf file exists and move that pdf file into it, else create it and move that file into that folder.&#xA;4. If file extension is .xlsx, check if the &quot;\Processed Excel Invoice&quot; folder exists and move the excel file into it, else create it and move all the excel files into it" Condition="[file.ToString.Contains(&quot;.pdf&quot;)]" DisplayName="If file in the project folder" sap:VirtualizedContainerService.HintSize="2597,1482" sap2010:WorkflowViewState.IdRef="If_12">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If.Then>
+                          <Sequence DisplayName="Sequence To Sort The Files" sap:VirtualizedContainerService.HintSize="1276,1262" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:Boolean" Name="invoiceFolderExist" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign DisplayName="Assign: fileName to a downloadedFile" sap:VirtualizedContainerService.HintSize="1234,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[fileName]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[file.ToString]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign sap2010:Annotation.AnnotationText="Assign the invoiceFolder variable to the donwloaded file month and year (&quot;mmyyyy&quot;)" DisplayName="Assign: invoiceFolder to the &quot;mm-yyyy&quot;" sap:VirtualizedContainerService.HintSize="1234,117" sap2010:WorkflowViewState.IdRef="Assign_9">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[invoiceFolder]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(fileName, "(?&lt;=_\d{2})\d+(?=_)").ToString]</InArgument>
+                              </Assign.Value>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Assign>
+                            <ui:PathExists sap2010:Annotation.AnnotationText="Checks if the path to the invoiceFolder exists in the project folder" DisplayName="Path To invoiceFolder Exists" Exists="[invoiceFolderExist]" sap:VirtualizedContainerService.HintSize="1234,131" sap2010:WorkflowViewState.IdRef="PathExists_4" Path="[invoiceFolder]" PathType="Folder">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:PathExists>
+                            <If sap2010:Annotation.AnnotationText="If there is no name for the folder (ie. if invoice file format does not have the date) do not move the file.&#xA;Else move the file into the invoiceFolder" Condition="[String.IsNullOrEmpty(invoiceFolder)]" DisplayName="If invoiceFolder" sap:VirtualizedContainerService.HintSize="1234,742" sap2010:WorkflowViewState.IdRef="If_9">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If.Then>
+                                <ui:Comment sap:VirtualizedContainerService.HintSize="334,74" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// Do not move the file because invoiceFolder does not have a name" />
+                              </If.Then>
+                              <If.Else>
+                                <If sap2010:Annotation.AnnotationText="Checks if the invoiceFolder exists in the project folder, if it exists it will move the pdf file (fileName) to invoiceFolder &quot;mmyyyy&quot;" Condition="[invoiceFolderExist]" DisplayName="If invoiceFolder exist" sap:VirtualizedContainerService.HintSize="855,552" sap2010:WorkflowViewState.IdRef="If_8">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Then>
+                                    <ui:MoveFile ContinueOnError="True" Destination="[invoiceFolder]" DisplayName="Move File into invoiceFolder" sap:VirtualizedContainerService.HintSize="384,157" sap2010:WorkflowViewState.IdRef="MoveFile_7" Overwrite="True" Path="[fileName]" />
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence DisplayName="Create invoiceFolder and move fileName" sap:VirtualizedContainerService.HintSize="426,373" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create invoice Folder" sap:VirtualizedContainerService.HintSize="384,84" sap2010:WorkflowViewState.IdRef="CreateDirectory_4" Path="[projectFolderPath+&quot;\&quot;+invoiceFolder]" />
+                                      <ui:MoveFile ContinueOnError="True" Destination="[invoiceFolder]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="384,157" sap2010:WorkflowViewState.IdRef="MoveFile_8" Overwrite="True" Path="[fileName]" />
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                              </If.Else>
+                            </If>
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <If sap2010:Annotation.AnnotationText="If file in project folder is an excel file, check if path to &quot;\Processed Excel Files&quot; folder exists and move excel files into it&#xA;Else create the &quot;\Processed Excel Files&quot; folder and move excel files into it" Condition="[file.ToString.Contains(&quot;.xlsx&quot;)]" DisplayName="If file is excel file" sap:VirtualizedContainerService.HintSize="1276,1136" sap2010:WorkflowViewState.IdRef="If_11">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Then>
+                              <Sequence DisplayName="Moving .xlsx files into &quot;\Processed Excel Files&quot;" sap:VirtualizedContainerService.HintSize="897,946" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:Boolean" Name="excelFolderExists" />
+                                  <Variable x:TypeArguments="x:String" Name="excelFolder" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign sap2010:Annotation.AnnotationText="Path to the &quot;\Processed Excel Files&quot; folder" DisplayName="Assign excelFolder" sap:VirtualizedContainerService.HintSize="855,91" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[excelFolder]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[projectFolderPath+"\Processed Excel Files"]</InArgument>
+                                  </Assign.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Assign>
+                                <ui:PathExists DisplayName="Path &quot;Processed Excel Files&quot; Exists" Exists="[excelFolderExists]" sap:VirtualizedContainerService.HintSize="855,89" sap2010:WorkflowViewState.IdRef="PathExists_5" Path="[excelFolder]" PathType="File" />
+                                <If sap2010:Annotation.AnnotationText="If path to &quot;\Processed Excel Files&quot; exists move .xlsx files into it&#xA;Else create &quot;\Processed Excel Files&quot; folder and move files into it" Condition="[excelFolderExists]" DisplayName="If path to &quot;Processed Excel Files&quot; Exists" sap:VirtualizedContainerService.HintSize="855,594" sap2010:WorkflowViewState.IdRef="If_10">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Then>
+                                    <ui:MoveFile ContinueOnError="True" Destination="[excelFolder]" DisplayName="Move .xlsx File into &quot;\Processed Excel Files&quot;" sap:VirtualizedContainerService.HintSize="384,157" sap2010:WorkflowViewState.IdRef="MoveFile_9" Overwrite="True" Path="[file.ToString]" />
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence sap2010:Annotation.AnnotationText="Create &quot;\Processed Excel Files&quot; and move .xlsx files into it" DisplayName="Create &quot;\Processed Excel Files&quot;" sap:VirtualizedContainerService.HintSize="426,404" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create excelFolder Folder" sap:VirtualizedContainerService.HintSize="384,84" sap2010:WorkflowViewState.IdRef="CreateDirectory_5" Path="[excelFolder]" />
+                                      <ui:MoveFile ContinueOnError="True" Destination="[excelFolder]" DisplayName="Move .xlsx File &quot;\Processed Excel Files&quot;" sap:VirtualizedContainerService.HintSize="384,157" sap2010:WorkflowViewState.IdRef="MoveFile_10" Overwrite="True" Path="[file.ToString]" />
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                              </Sequence>
+                            </If.Then>
+                            <If.Else>
+                              <ui:Comment sap:VirtualizedContainerService.HintSize="334,55" sap2010:WorkflowViewState.IdRef="Comment_5" Text="// Do nothing" />
+                            </If.Else>
+                          </If>
+                        </If.Else>
+                      </If>
+                    </ActivityAction>
+                  </ui:ForEach.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:ForEach>
+              </Sequence>
+            </FlowStep>
+          </FlowStep.Next>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+  </Flowchart>
+</Activity>
