@@ -15,7 +15,8 @@ Orchestrator Queue. And finally it will email the spreadsheet to me/you
 
 **Software Used**
 * UiPath Studio must be installed (visit: www.uipath.com)
-* Adobe reader and Microsoft Excel/Office (Not necessary if you dont want to open the files)
+* Adobe reader and Microsoft Excel/Office
+* Google Chrome
 
 **Credits**
 1. Names and Groups
