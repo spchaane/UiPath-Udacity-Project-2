@@ -11,7 +11,7 @@ extract specific data and store those values in an Excel spreadsheet and a subse
 Orchestrator Queue. And finally it will email the spreadsheet to me/you
 
 **Files/Folders Used**
-* nd340-c1-intro-to-uipath-rpa-project-starter-master.zip (Downloaded by the bot)
+* No files/folders used. All files and folders will be created by the robot
 
 **Software Used**
 * UiPath Studio must be installed (visit: www.uipath.com)
